@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap"
+            rel="stylesheet">
+        <style>
+        * {
+            font-family: "Orbitron", sans-serif;
+        }
+
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 553px;
+            background-image:url(https://png.pngtree.com/thumb_back/fh260/background/20200714/pngtree-modern-double-color-futuristic-neon-background-image_351866.jpg);
+            background-size: 100% 100%;
+        }
+
+        .days {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+
+        .box {
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            border-radius: 10px;
+            width: 400px;
+            height: 130px;
+            align-items: center;
+        }
+
+
+        h1 {
+            font-size: 45px;
+            text-align: center;
+            margin: 5px 0px;
+        }
+
+
+        .day {
+            color: yellowgreen;
+        }
+
+
+        .currentDay {
+            font-weight: 500px;
+            color: red;
+        }
+
+
+        #ampm {
+            font-size: 20px;
+        }
+    </style>
+    </head>
+
+    <body>
+        <section>
+            <div class="box">
+                <div class="clockBox">
+                    <div class="days">
+                        <span class="day" id="mon">Mon</span>
+                        <span class="day" id="tue">Tue</span>
+                        <span class="day" id="wed">Wed</span>
+                        <span class="day" id="thu">Thu</span>
+                        <span class="day" id="fri">Fri</span>
+                        <span class="day" id="sat">Sat</span>
+                        <span class="day" id="sun">Sun</span>
+                    </div>
+                    <h1><span id="hr">00</span> : <span id="min">00</span> :
+                        <span id="sec">00</span> <span
+                            id="ampm">AM</span></h1>
+                </div>
+            </div>
+        </section>
+
+        <script>
+        let hr = document.querySelector('#hr')
+        let min = document.querySelector('#min')
+        let sec = document.querySelector('#sec')
+        let ampm = document.querySelector('#ampm')
+        setInterval(function () {
+            let date = new Date()
+            hr.innerText = (date.getHours() < 10 ? '0' : '') + date.getHours()
+            min.innerText = (date.getMinutes() < 10 ? '0' : '') + date.getMinutes()
+            sec.innerText = (date.getSeconds() < 10 ? '0' : '') + date.getSeconds()
+            ampm.innerText = hr >= 12 ? 'AM' : 'PM'
+
+
+            console.log(date.getDay());
+
+
+            switch (date.getDay()) {
+                case 1:
+                    document.querySelector('#mon').setAttribute('class', 'currentDay')
+                    break;
+                case 2:
+                    document.querySelector('#tue').setAttribute('class', 'currentDay')
+                    break;
+                case 3:
+                    document.querySelector('#wed').setAttribute('class', 'currentDay')
+                    break;
+                case 4:
+                    document.querySelector('#thu').setAttribute('class', 'currentDay')
+                    break;
+                case 5:
+                    document.querySelector('#fri').setAttribute('class', 'currentDay')
+                    break;
+                case 6:
+                    document.querySelector('#sat').setAttribute('class', 'currentDay')
+                    break;
+                case 7:
+                    document.querySelector('#sun').setAttribute('class', 'currentDay')
+                    break;
+            }
+        }, 1000)
+    </script>
+    </body>
+
+</html>
